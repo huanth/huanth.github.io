@@ -1,68 +1,408 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HuanTH</title>
-    <meta name="description" content="Chào Mừng bạn đã đến với profile của HuanTH">
-    <meta name="keywords" content="HuanTH, HuanTH dev">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="HuanTH">
-    <meta property="og:description" content="Chào Mừng bạn đã đến với profile của Nauhyuh">
-    <meta property="og:image" content="https://raw.githubusercontent.com/niyakipham/assets/kaguya.jpeg">
-    <link rel="canonical" href="https://huanth.github.io/">
-    <link rel="icon" href="https://huanth.github.io/assets/kaguya.jpeg" type="image/x-icon">
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="container">
-      <div id="profile">
-        <img id="cut"
-          src="./assets/kaguya.jpeg"
-          alt="huanth avatar"
-        />
-        <p>@huanth</p>
-      </div>
-
-      <div id="switch" onclick="toggleMode()">
-        <button></button>
-        <span></span>
-      </div>
-
-      <p class="welcome-text">Thank you for visiting my personal page.</p>
-      
-      <!-- <ul></ul> -->
-      
-      <div id="social-links">
-        <a href="https://github.com/huanth" target="_blank">
-          <ion-icon name="logo-github"></ion-icon>
-        </a>
-
-        <a href="https://youtube.com/huanth" target="_blank">
-          <ion-icon name="logo-youtube"></ion-icon>
-        </a>
-
-        <a href="https://linkedin.com/in/huanth" target="_blank">
-          <ion-icon name="logo-linkedin"></ion-icon>
-        </a>
-      </div>
-
-      <footer>
-        @2025 Copyright by <a href="https://github.com/huanth">HuanTH</a>
-      </footer>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab | Google Chrome</title>
+    <style>
+        :root {
+            --primary-color: #00c8ff;
+            --secondary-color: #6e00ff;
+            --dark-bg: #0f0f15;
+            --darker-bg: #08080d;
+            --text-color: #e0e0e0;
+            --accent-color: #ff00aa;
+            --card-bg: rgba(30, 30, 40, 0.6);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(110, 0, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(0, 200, 255, 0.15) 0%, transparent 50%);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), var(--secondary-color), transparent);
+            opacity: 0.5;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo::before {
+            content: '◊';
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .time-date {
+            text-align: right;
+        }
+        
+        .time {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, var(--text-color), #aaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .date {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: none;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 200, 255, 0.3);
+        }
+        
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .quick-link {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quick-link::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent,
+                transparent,
+                transparent,
+                rgba(0, 200, 255, 0.1)
+            );
+            transform: rotate(30deg);
+            transition: all 0.5s ease;
+        }
+        
+        .quick-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: rgba(0, 200, 255, 0.3);
+        }
+        
+        .quick-link:hover::before {
+            transform: rotate(30deg) translate(10%, 10%);
+        }
+        
+        .quick-link i {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .quick-link span {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: auto;
+        }
+        
+        /* Futuristic decorative elements */
+        .decorative-circle {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+        
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-color);
+            top: -100px;
+            left: -100px;
+        }
+        
+        .circle-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary-color);
+            bottom: -150px;
+            right: -150px;
+        }
+        
+        .grid-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
+        }
+        
+        /* Animation effects */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .quick-links {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 1rem;
+            }
+            
+            .time {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="grid-pattern"></div>
+    <div class="decorative-circle circle-1"></div>
+    <div class="decorative-circle circle-2"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">FutureTab</div>
+            <div class="time-date">
+                <div class="time" id="time">00:00:00</div>
+                <div class="date" id="date">Thứ Hai, 1 tháng 1, 2023</div>
+            </div>
+        </header>
+        
+        <main class="main-content">
+            <div class="search-container floating">
+                <input type="text" class="search-box" placeholder="Tìm kiếm hoặc nhập địa chỉ web..." autofocus>
+            </div>
+            
+            <div class="quick-links">
+                <a href="https://google.com" class="quick-link">
+                    <i class="fas fa-search"></i>
+                    <span>Tìm kiếm</span>
+                </a>
+                <a href="https://youtube.com" class="quick-link">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://github.com" class="quick-link">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://facebook.com" class="quick-link">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://twitter.com" class="quick-link">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+                <a href="https://reddit.com" class="quick-link">
+                    <i class="fab fa-reddit"></i>
+                    <span>Reddit</span>
+                </a>
+                <a href="https://linkedin.com" class="quick-link">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://gmail.com" class="quick-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Gmail</span>
+                </a>
+            </div>
+        </main>
+        
+        <footer>
+            © <span id="year">2025</span> Niyaki Pham
+        </footer>
     </div>
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-    <script src="./script.js"></script>
-  </body>
+    <script>
+        // Update time and date
+        function updateTime() {
+            const now = new Date();
+            
+            // Format time
+            const timeElement = document.getElementById('time');
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+            
+            // Format date
+            const dateElement = document.getElementById('date');
+            const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+            const dayName = days[now.getDay()];
+            const date = now.getDate();
+            const months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+            const monthName = months[now.getMonth()];
+            const year = now.getFullYear();
+            dateElement.textContent = `${dayName}, ${date} tháng ${monthName}, ${year}`;
+            
+            // Update year in footer
+            document.getElementById('year').textContent = year;
+        }
+        
+        // Update time immediately and then every second
+        updateTime();
+        setInterval(updateTime, 1000);
+        
+        // Focus search box when page loads
+        document.querySelector('.search-box').focus();
+        
+        // Handle search
+        document.querySelector('.search-box').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = this.value.trim();
+                if (query) {
+                    if (query.includes('.') && !query.includes(' ')) {
+                        // If it looks like a URL
+                        window.location.href = query.startsWith('http') ? query : `https://${query}`;
+                    } else {
+                        // Otherwise search with Google
+                        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                    }
+                }
+            }
+        });
+        
+        // Add futuristic hover effect to quick links
+        document.querySelectorAll('.quick-link').forEach(link => {
+            link.addEventListener('mousemove', (e) => {
+                const rect = link.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                link.style.setProperty('--mouse-x', `${x}px`);
+                link.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body>
 </html>
